@@ -1,0 +1,85 @@
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <h1 class="font-weight-semi-bold text-titlecase mb-3">Ajouter Votre Annonce</h1>
+    </div>
+</div>
+<div class="center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 ">
+                <form [formGroup]="annonceForm">
+                    <div class="form-group">
+                      <label >Nom : </label>
+                      <input type="text" class="form-control" formControlName="productName" style="border-color: grey; width: 420px;">
+                    </div>
+                    <div *ngIf="annonceForm.controls['productName'].invalid && (annonceForm.controls['productName'].dirty || 
+                    annonceForm.controls['productName'].touched)">
+                        <div *ngIf="annonceForm.controls['productName'].errors.required" style="color: red ;">
+                                merci de saisir le nom du produit
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <label>Catégorie : </label>
+                        <br>
+                        <select class="custom-select" formControlName="category" name="category" style="border-color: grey; width: 420px;">
+                          <option value="mode">Mode</option>
+                          <option value="maison">Maison</option>
+                          <option value="media">Media</option>
+                          <option value="immobilier">Immobilier</option>
+                          <option value="véhicules">Véhicules</option>
+                        </select>
+                      </div>
+                    <div class="form-group">
+                      <label>Prix : </label>
+                      <input type="number" class="form-control" formControlName="price"  style="border-color: grey; width: 420px;">
+                    </div>
+                    <div *ngIf="annonceForm.controls['price'].invalid && (annonceForm.controls['price'].dirty || 
+                    annonceForm.controls['price'].touched)">
+                        <div *ngIf="annonceForm.controls['price'].errors.required" style="color: red ;">
+                                merci de saisir le prix du produit
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantité : </label>
+                        <input type="number" class="form-control" formControlName="qty"  style="border-color: grey; width: 420px;">
+                      </div>
+                      <div *ngIf="annonceForm.controls['qty'].invalid && (annonceForm.controls['qty'].dirty || 
+                      annonceForm.controls['qty'].touched)">
+                          <div *ngIf="annonceForm.controls['qty'].errors.required" style="color: red ;">
+                                  merci de mettre la quantité
+                          </div>
+                      </div>
+                    <div class="form-group">
+                        <label>Description : </label>
+                        <input type="string" class="form-control" formControlName="description" class="form-control" style="border-color: grey; width: 420px;">
+                    </div>
+                    
+    
+                  </form>
+            </div>
+            <div class="col-lg-6">
+                <div>
+                    <button class="btn btn-primary" (click)="filePicker.click()" style="width: 250px; margin-top: 10%; margin-left: 30%;"> 
+                        Ajouter une/des photo(s)
+                    </button>
+                </div>
+                <br>
+                <br>
+                <div>
+                    <img [src]="imagePreview" *ngIf ="imagePreview" alt="" style="width: 250px; height: 250px; margin-left: 30%;">
+                </div>
+                <div class="form-group">
+                     <input type="file" style="visibility: hidden;" #filePicker (change)='onImageSelected($event)'>
+                 </div>
+                
+            </div>
+            <br>
+            <br>
+            <div class="form-group text-center">                  
+                <button class="btn btn-primary" (click)="addProduct()" type="submit" style=" margin-left: 250%; width: 180px;" >Ajouter</button>
+            </div>
+           
+        </div>
+    </div>
+</div>
+

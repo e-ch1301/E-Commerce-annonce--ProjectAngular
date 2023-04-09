@@ -1,0 +1,29 @@
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <h1 class="font-weight-semi-bold text-titlecase mb-3">Toutes Les Annonces</h1>
+    </div>
+</div>
+<section class="accomodation_area section_gap">
+    <div class="container">
+        <div class="col-lg-4" style="margin-left: 75%;">
+            <label>Rechercher par catégorie : </label>
+            <select class="custom-select" name="category"  [(ngModel)]="term">
+              <option value="">Toutes Les Annonces</option>
+              <option value="mode">Mode</option>
+              <option value="maison">Maison</option>
+              <option value="media">Media</option>
+              <option value="immobilier">Immobilier</option>
+              <option value="véhicules">Véhicules</option>
+            </select>    
+        </div>
+        <br>
+        <br>
+               <div class="row">
+                    <div class="col-lg-4" *ngFor="let A of T | categoryFilter : term " >
+                       <app-annonce [annonce]="A"></app-annonce>
+                    </div>
+        </div> 
+    </div>
+</section>
+
+

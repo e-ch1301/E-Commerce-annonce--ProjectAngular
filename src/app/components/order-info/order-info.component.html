@@ -1,0 +1,31 @@
+<div class="card product-item border-0 mb-4">
+    <div class="text-center card-header product-img  overflow-hidden bg-transparent border p-0">
+      <img src="{{annonce.avatar}}" alt="" >
+    </div>
+    <div class="d-flex mb-3">
+        <div class="text-primary mr-2">
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star-half-alt"></small>
+            <small class="far fa-star"></small>
+        </div>
+        <small class="pt-1">(99 Reviews)</small>
+    </div>
+    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+      <h2 class="text-truncate mb-3" style="color: rgba(168, 10, 71, 0.568);">
+        {{O[0].annonce[0].productName | titlecase}}</h2>
+      <div class="d-flex justify-content-center">
+          <h6>Prix : {{O[0].annonce[0].price}} DT </h6><h6 class="text-muted ml-2"></h6>
+      </div>
+      <div class="d-flex justify-content-center">
+          <h6> Quantité : {{O[0].qty}}</h6>
+      </div> 
+      <div class="d-flex justify-content-center">
+        <h6> Catégorie : {{O[0].category}}</h6>
+      </div> 
+      <div class="">
+        <h3 style="color: #b61a78 ;" class="font-weight-semi-bold mb-4">Annonceur: {{O[0].user[0].firstName}}{{O[0].user[0].lastName}} </h3>
+    </div>
+
+  </div>

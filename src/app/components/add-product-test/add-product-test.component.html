@@ -1,0 +1,72 @@
+
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <h1 class="font-weight-semi-bold text-titlecase mb-3">ADD PRODUCT</h1>
+    </div>
+</div>
+    <div class="container" style="margin-left: 35%;">
+        <div class="row">
+           
+                <form [formGroup]="productForm">
+                    <div class="form-group">
+                      <label >Name : </label>
+                      <input type="text" class="form-control" formControlName="productName" style="border-color: grey; width: 420px;">
+                    </div>
+                    <div *ngIf="productForm.controls['productName'].invalid && (productForm.controls['productName'].dirty || 
+                    productForm.controls['productName'].touched)">
+                        <div *ngIf="productForm.controls['productName'].errors.required" style="color: red ;">
+                                merci de saisir le nom du produit
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Price: </label>
+                        <input type="number" class="form-control" formControlName="price"  style="border-color: grey; width: 420px;">
+                      </div>
+                      <div *ngIf="productForm.controls['price'].invalid && (productForm.controls['price'].dirty || 
+                      productForm.controls['price'].touched)">
+                          <div *ngIf="productForm.controls['price'].errors.required" style="color: red ;">
+                                  merci de saisir le prix du produit
+                          </div>
+                      </div>
+                    <div class="control-group form-group">
+                        <label>Catégorie : </label>
+                        <br>
+                        <select class="custom-select"  formControlName="category" name="category" style="border-color: grey; width: 420px;">
+                          <option *ngFor = "let i of categories " >{{i.categoryName}}</option>
+                         
+                        </select>
+                      </div>
+                       <br>
+                      <div class="form-group text-center">                  
+                        <button class="btn btn-primary" type="submit" (click)="addProduct()" style=" width: 180px;">Add</button>
+                      </div>
+                
+                  </form>
+         
+           
+        </div>
+    </div>
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-12 table-responsive mb-5">
+                <table class="table table-bordered text-center mb-0">
+                    <thead class="bg-secondary text-dark">
+                        <tr>
+                            <th>ID </th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        <tr *ngFor = "let m of products ">
+                            <td class="align-middle">{{m.id}}</td>
+                            <td class="align-middle">{{m.productName}}</td>
+                            <td class="align-middle">{{m.price}}</td>
+                            <td class="align-middle">{{m.category}}</td>
+                         
+                           
+                            </tr>
+                    </tbody>
+                </table>
+

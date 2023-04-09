@@ -1,0 +1,122 @@
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <h1 class="font-weight-semi-bold text-titlecase mb-3">Créer Votre Compte</h1>
+    </div>
+</div>
+<div class="site-section"> 
+<div class="container">
+   <div class="row">
+    <div class="col-lg-6">
+        <form [formGroup]="signupForm">
+            <div class="form-group">
+                <label>Prénom : </label>
+                <input type="text" class="form-control" formControlName="firstName" style="border-color: grey; width: 420px;">
+            </div>
+            <div *ngIf="signupForm.controls['firstName'].invalid && (signupForm.controls['firstName'].touched || signupForm.controls['firstName'].dirty )">
+                <div *ngIf="signupForm.controls['firstName'].errors.required" style="color: red ;">
+                        merci de saisir votre prénom
+                </div>
+                <div *ngIf="signupForm.controls['firstName'].errors.minlength" style="color: red;">
+                        le prénom doit avoir au moins 3 caractères 
+                </div>
+            </div>
+            <div class=" form-group">
+                <label>Nom : </label>
+                <input type="email" class="form-control" formControlName="lastName"  style="border-color: grey; width: 420px;">
+            </div>
+            <div *ngIf="signupForm.controls['lastName'].invalid && (signupForm.controls['lastName'].dirty || signupForm.controls['lastName'].touched)">
+                <div *ngIf="signupForm.controls['lastName'].errors.required" style="color: red ;">
+                            merci de saisir votre nom
+                </div>
+                <div *ngIf="signupForm.controls['lastName'].errors.minlength" style="color: red;">
+                            le nom doit avoir au moins 5 caractères
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Téléphone : </label>
+                <input type="number" class="form-control" formControlName="tel" style="border-color: grey; width: 420px;">
+            </div>
+            <div *ngIf="signupForm.controls['tel'].invalid && (signupForm.controls['tel'].dirty || signupForm.controls['tel'].touched)">
+                <div *ngIf="signupForm.controls['tel'].errors.required" style="color: red ;">
+                          merci de saisir votre numéro de téléphone 
+                </div>
+                <div *ngIf="signupForm.controls['tel'].errors.minlength" style="color: red;">
+                          le numéro de téléphone doit avoir au moins 8 chiffres 
+                </div>
+            </div>
+            <div class="form-group">
+                <label>E-mail : </label>
+                <input type="email" class="form-control" formControlName="email" style="border-color: grey; width: 420px;">
+            </div>
+            <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)">
+                <div *ngIf="signupForm.controls['email'].errors.required" style="color: red ;">
+                          merci de saisir votre adresse mail
+                </div>
+                <div *ngIf="signupForm.controls['email'].errors.email" style="color: red;">
+                          adresse mail invalide
+                </div>
+            </div>
+            <span style="color: red;">{{errorMsg}}</span>
+            <div class=" form-group">
+                 <label>Adresse : </label>
+                 <input type="textarea" class="form-control" formControlName="adress" style="border-color: grey; width: 420px;">
+            </div>
+            <div *ngIf="signupForm.controls['adress'].invalid &&(signupForm.controls['adress'].dirty || signupForm.controls['adress'].touched)">
+                <div *ngIf="signupForm.controls['adress'].errors.required" style="color: red ;">
+                          merci de saisir votre adresse
+                </div>
+                <div *ngIf="signupForm.controls['adress'].errors.minlength" style="color: red;">
+                          l'adresse doit avoir au moins 10 caractères
+                </div>
+            </div>
+            <div class=" form-group">
+                <label>Mot de passe : </label>
+                <input type="password" class="form-control" formControlName="pwd" style="border-color: grey; width: 420px;">
+            </div>
+            <div *ngIf="signupForm.controls['pwd'].invalid &&(signupForm.controls['pwd'].dirty || signupForm.controls['pwd'].touched)">
+                <div *ngIf="signupForm.controls['pwd'].errors.required" style="color: red ;">
+                           merci de saisir votre mot de passe
+                </div>
+                <div *ngIf="signupForm.controls['pwd'].errors.minlength" style="color: red;">
+                           le mot de passe doit comporter au moins 6 caractères
+                </div>
+                <div *ngIf="signupForm.controls['pwd'].errors.maxlength" style="color: red;">
+                         le mot de passe doit comporter au maximum 12 caractères
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Confirmer votre mot de passe : </label>
+                <input type="password" class="form-control" formControlName="confirmPwd" style="border-color: grey; width: 420px;">
+            </div>
+            <div *ngIf="signupForm.controls['confirmPwd'].invalid &&(signupForm.controls['confirmPwd'].dirty || signupForm.controls['confirmPwd'].touched)">
+                <div *ngIf="signupForm.controls['confirmPwd'].errors.x" style="color: red ;">
+                    Mot de passe non conforme
+                </div>
+            </div>
+            
+        </form>
+    </div>
+    <div class="col-lg-6">
+        <div>
+            <button class="btn btn-primary" (click)="filePicker.click()" style="width: 200px; margin-top: 10%; margin-left: 30%;"> 
+                Ajouter un avatar
+            </button>
+        </div>
+        <br>
+        <br>
+        <div>
+            <img [src]="imagePreview" *ngIf ="imagePreview" alt="" style="width: 200px; height: 200px; margin-left: 30%;">
+        </div>
+        <div class="form-group">
+             <input type="file" style="visibility: hidden;" #filePicker (change)='onImageSelected($event)'>
+         </div>
+        
+    </div>
+   
+    <br>
+    <div class="form-group text-center">                  
+        <button class="btn btn-primary" (click)="signup()" type="submit" style=" margin-left: 250%; width: 180px;" >Valider</button>
+    </div>
+</div>
+</div>
+</div>

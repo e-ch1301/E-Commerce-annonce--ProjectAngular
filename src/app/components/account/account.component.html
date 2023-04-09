@@ -1,0 +1,31 @@
+<br>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <ul class="list-group">
+                <li class="list-group-item hoverable">
+                    <a routerLink="" (click)="userAnnonce()">Dashboard</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-4 ">
+              <img [src]="userInfo.avatar" [alt]="" style="width: 300px; height: 200px;"><br>
+        </div>
+        <div class="col-lg-4 ">
+            <div class="col-md-8 mt-3">
+                <label for="userName">Nom :</label>
+                <p style="font-size: 15px;"> {{userInfo.firstName}} {{userInfo.lastName}}</p>
+            </div>
+            <div class="col-md-8 mb-3">
+                <label for="emailId">Email :</label>
+                <p style="font-size: 15px;">{{userInfo.email}}</p>
+            </div>
+            <div class="col-md-8 mb-3">
+                <label for="emailId">Téléphone :</label>
+                <p style="font-size: 15px;">{{userInfo.tel}}</p>
+            </div>
+        </div>
+    </div>
+</div>
